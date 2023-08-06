@@ -1,0 +1,269 @@
+:root {
+    --primary-color: #0052d9;
+    --primary-color-light: #b5c7ff;
+    --error-color: #d54941;
+    --warning-color: #e37318;
+    --success-color: #2ba471;
+    --success-color-light: #c6f3d7;
+    --font-color: #181818;
+    --max-width: 400px;
+    --max-height: 600px;
+}
+
+html {
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Hiragino Sans GB, Microsoft YaHei UI, Microsoft YaHei, Source Han Sans CN, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+    color: var(--font-color);
+    font-size: 14px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: #f3f3f3;
+}
+
+html body {
+    width: var(--max-width);
+    height: var(--max-height);
+    background: #ffffff;
+    margin: 0 auto;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.primary-button {
+    padding: 0.8em 1em;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+}
+
+.primary-button:hover {
+    background-color: var(--primary-color);
+    box-shadow: 0px 5px 20px var(--primary-color);
+    color: #fff;
+}
+
+.primary-button:active {
+    transform: translateY(-1px);
+}
+
+.primary-button+.primary-button {
+    margin-left: 1em;
+}
+
+.toggle-switch {
+    position: relative;
+}
+
+.toggle-switch .switch {
+    position: relative;
+    display: inline-block;
+}
+
+.toggle-switch .switch>input {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    z-index: -1;
+    position: absolute;
+    right: 6px;
+    top: -8px;
+    display: block;
+    margin: 0;
+    border-radius: 50%;
+    width: 1em;
+    height: 1em;
+    background-color: rgba(0, 0, 0, 0.38);
+    outline: none;
+    opacity: 0;
+    transform: scale(1);
+    pointer-events: none;
+    transition: opacity 0.3s 0.1s, transform 0.2s 0.1s;
+}
+
+.toggle-switch .switch>input:checked {
+    right: -10px;
+    background-color: var(--success-color);
+}
+
+.toggle-switch .switch>input:checked+span::before {
+    background-color: var(--success-color);
+}
+
+.toggle-switch .switch>input:checked+span::after {
+    background-color: var(--success-color);
+    transform: translateX(16px);
+}
+
+.toggle-switch .switch>input:hover {
+    opacity: 0.04;
+}
+
+.toggle-switch .switch>input:focus {
+    opacity: 0.12;
+}
+
+.toggle-switch .switch>input:hover:focus {
+    opacity: 0.16;
+}
+
+.toggle-switch .switch>input:active {
+    opacity: 1;
+    transform: scale(0);
+    transition: transform 0s, opacity 0s;
+}
+
+.toggle-switch .switch>input:active+span::before {
+    background-color: #8f8f8f;
+}
+
+.toggle-switch .switch>input:active:checked+span::before {
+    background-color: var(--success-color);
+}
+
+.toggle-switch .switch>input:disabled {
+    opacity: 0;
+}
+
+.toggle-switch .switch>input:disabled+span::before {
+    background-color: #ddd;
+}
+
+.toggle-switch .switch>input:disabled:checked+span::before {
+    background-color: var(--success-color-light);
+}
+
+.toggle-switch .switch>input:disabled:checked+span::after {
+    background-color: var(--success-color);
+}
+
+.toggle-switch .switch>span::before {
+    content: "";
+    display: inline-block;
+    margin: 5px 0 5px 10px;
+    border-radius: 7px;
+    width: 2em;
+    height: 0.6em;
+    background-color: rgba(0, 0, 0, 0.38);
+    vertical-align: top;
+    transition: background-color 0.2s, opacity 0.2s;
+}
+
+.toggle-switch .switch>span::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    right: 16px;
+    border-radius: 50%;
+    width: 1em;
+    height: 1em;
+    background-color: #fff;
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.header {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em;
+    color: var(--font-color);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.header .title {
+    font-size: large;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.content-box {
+    height: 0;
+    flex: 1 0 0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    padding: 10px 0px;
+}
+
+.content-box::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.content-box::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+
+.content-box .info-item {
+    display: flex;
+    align-items: center;
+    padding: 4px 10px;
+    justify-content: space-between;
+}
+
+.content-box .info-item-left {
+    flex-shrink: 0;
+}
+
+.content-box .info-item-center {
+    flex: 1 0 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.content-box .info-item-center .web-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    margin: 0 10px;
+    object-fit: contain;
+    user-select: none;
+}
+
+.content-box .info-item-center .web-icon img {
+    width: 100%;
+    height: 100%;
+}
+
+.content-box .info-item-center .web-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #000;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    user-select: none;
+}
+
+.content-box .info-item-right {
+    flex-shrink: 0;
+    color: var(--font-color);
+    cursor: pointer;
+}
+
+.content-box .info-item-right:hover {
+    color: var(--primary-color);
+}
+
+.content-box .info-item:hover {
+    background-color: #f3f3f3;
+}
