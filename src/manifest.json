@@ -20,9 +20,20 @@
       "src/background.ts"
     ]
   },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "src/content.ts"
+      ]
+    }
+  ],
   "permissions": [
     "storage",
     "tabs",
+    "contextMenus",
     "activeTab",
     "http://*/*",
     "https://*/*"
