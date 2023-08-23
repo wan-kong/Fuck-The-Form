@@ -5,8 +5,8 @@ function generateManifest() {
   const manifest = readJsonFile("src/manifest.json");
   const pkg = readJsonFile("package.json");
   return {
-    name: pkg.name,
-    description: pkg.description,
+    name: 'Fuck The Form',
+    description: "干掉繁琐的密码！！",
     version: pkg.version,
     ...manifest,
   };
