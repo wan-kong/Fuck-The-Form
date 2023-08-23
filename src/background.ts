@@ -19,6 +19,14 @@ const loadData = async () => {
   return forms
 }
 
+const refreshData = async () => {
+  const forms = await loadData()
+  datas.clear()
+  forms.forEach((form) => {
+    datas.add(form)
+  })
+}
+
 /**
 * 保存数据
 *
@@ -37,6 +45,7 @@ const initData = async () => {
 
 const getCurForm = async () => {
   const [curTab] = await browser.tabs.query({ active: true, currentWindow: true })
+  await refreshData()
   output('curTab', curTab)
   if (curTab) {
     const { url } = curTab
@@ -102,6 +111,7 @@ browser.runtime.onMessage.addListener(async (message) => {
       {
         const { data } = message
         const [curTab] = await browser.tabs.query({ active: true, currentWindow: true })
+        await refreshData()
         if (curTab) {
           const { url, title, favIconUrl } = curTab
           let form = Array.from(datas).find((item) => {

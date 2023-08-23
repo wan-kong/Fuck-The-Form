@@ -96,7 +96,6 @@ const initData = async () => {
     forms.forEach((form) => {
         datas.add(form)
     })
-    console.log('datas', datas)
     parseToPopup()
 
 }
@@ -121,20 +120,33 @@ const bindBtnEvent = () => {
                 reader.readAsText(file)
                 reader.onload = () => {
                     const { id, data } = JSON.parse(reader.result as string)
-                    console.log(data)
                     if (id !== browser.runtime.id) {
-                        alert('导入的数据不是本插件的数据')
+                        importBtn.innerHTML = '数据格式有误 😅'
+                        setTimeout(() => {
+                            importBtn.innerHTML = '导入JSON'
+                        }, 3000);
                         return
                     }
                     if (data.length === 0) {
-                        alert('导入的数据为空')
+                        importBtn.innerHTML = '数据为空 🧐'
+                        setTimeout(() => {
+                            importBtn.innerHTML = '导入JSON'
+                        }, 3000);
                         return
                     }
                     data.forEach((item: FormItem) => {
+                        const has = Array.from(datas).find((dataItem) => dataItem.url === item.url)
+                        if (has) {
+                            datas.delete(has)
+                        }
                         datas.add(item)
                     })
                     parseToPopup()
                     setData()
+                    importBtn.innerHTML = '导入成功 👏'
+                    setTimeout(() => {
+                        importBtn.innerHTML = '导入JSON'
+                    }, 3000);
                 }
             })
         })
