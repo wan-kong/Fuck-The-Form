@@ -75,5 +75,4 @@ browser.runtime.onMessage.addListener((message) => {
     }
 
 });
-
-output('content loaded')
+console.log('%c Fuck The Form! ','color:#1e80ff;font-size:20px;background:#fff;padding:8px;');

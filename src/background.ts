@@ -50,7 +50,8 @@ const getCurForm = async () => {
   if (curTab) {
     const { url } = curTab
     const form = Array.from(datas).find((item) => {
-      return item.url === url
+      const reg= new RegExp(item.url)
+      return reg.test(url!)
     })
     return form
   } else {
@@ -115,7 +116,8 @@ browser.runtime.onMessage.addListener(async (message) => {
         if (curTab) {
           const { url, title, favIconUrl } = curTab
           let form = Array.from(datas).find((item) => {
-            return item.url === url
+            const reg= new RegExp(item.url)
+            return reg.test(url!)
           })
           // form已存在
           if (form) {

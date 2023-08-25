@@ -1,5 +1,5 @@
 import browser from "webextension-polyfill";
-import { FormItem, MSG_TYPE } from "./enum";
+import { FormItem } from "./enum";
 
 
 const datas = new Set<FormItem>()
@@ -135,7 +135,10 @@ const bindBtnEvent = () => {
                         return
                     }
                     data.forEach((item: FormItem) => {
-                        const has = Array.from(datas).find((dataItem) => dataItem.url === item.url)
+                        const has = Array.from(datas).find((dataItem) => {
+                            const reg = new RegExp(dataItem.url)
+                            return reg.test(item.url)
+                        })
                         if (has) {
                             datas.delete(has)
                         }
