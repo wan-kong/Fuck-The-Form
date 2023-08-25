@@ -34,8 +34,6 @@
     "storage",
     "tabs",
     "contextMenus",
-    "activeTab",
-    "http://*/*",
-    "https://*/*"
+    "activeTab"
   ]
 }
